@@ -1,12 +1,5 @@
-type Torikata = {
-  name: string;
-  TachiKataAreNotAbleTo: string[];
-};
-type Waza = {
-  name: string;
-  TachiKataAreNotAbleTo: string[];
-  TorikataAreNotAbleTo: string[];
-};
+import { Torikata } from "../types/type";
+import { Waza } from "../types/type";
 
 export const TachiKataList: string[] = ["立技", "半身半立", "座技"];
 
