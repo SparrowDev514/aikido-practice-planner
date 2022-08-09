@@ -1,9 +1,6 @@
-import { Torikata } from "../types/type";
-import { Waza } from "../types/type";
+export const tachiKataList = ["立技", "半身半立", "座技"];
 
-export const TachiKataList: string[] = ["立技", "半身半立", "座技"];
-
-export const TorikataList: Torikata[] = [
+export const torikataList = [
   {
     name: "正面打ち",
     TachiKataAreNotAbleTo: [],
@@ -62,7 +59,7 @@ export const TorikataList: Torikata[] = [
   },
 ];
 
-export const WazaList: Waza[] = [
+export const wazaList = [
   {
     name: "呼吸法",
     TachiKataAreNotAbleTo: [],
