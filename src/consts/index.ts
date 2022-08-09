@@ -116,6 +116,11 @@ export const wazaList = [
     TorikataAreNotAbleTo: ["両肩取り", "肩取り面打ち"],
   },
   {
+    name: "隅落とし",
+    TachiKataAreNotAbleTo: ["座技"],
+    TorikataAreNotAbleTo: [],
+  },
+  {
     name: "天秤投げ",
     TachiKataAreNotAbleTo: [],
     TorikataAreNotAbleTo: [],
