@@ -24,7 +24,7 @@ const Generater = () => {
 
       const wazaListAreAbleToList: Waza[] = wazaList.filter((waza: Waza) => {
         return !(
-          waza["TachiKataAreNotAbleTo"].includes(tachiKata) &&
+          waza["TachiKataAreNotAbleTo"].includes(tachiKata) ||
           waza["TorikataAreNotAbleTo"].includes(torikata["name"])
         );
       });
