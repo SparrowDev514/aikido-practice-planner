@@ -54,8 +54,8 @@ const Generater = () => {
       <hr />
       <table>
         <tbody>
-          {kataList.map((kata: string) => (
-            <tr key={kata}>
+          {kataList.map((kata: string, index: number) => (
+            <tr key={index}>
               <td>{kata}</td>
             </tr>
           ))}
