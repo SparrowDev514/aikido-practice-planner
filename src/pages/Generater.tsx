@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { tachiKataList, torikataList, wazaList } from "../consts/index";
 import { Torikata, Waza } from "../types/type";
 
@@ -44,6 +45,7 @@ const Generater = () => {
     <>
       <div>合気道稽古内容ジェネレーター</div>
       <input type="button" value="生成する" onClick={generateKataList} />
+      <Link to="settings">設定</Link>
       <hr />
       <table>
         <tbody>
