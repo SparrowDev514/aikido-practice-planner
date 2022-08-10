@@ -2,20 +2,31 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import { kataElementAtom } from "../atoms";
-import { KataElementLists, Tachikata, Torikata, Waza } from "../types/type";
+import {
+  KataElementLists,
+  Tachikata,
+  Torikata,
+  Waza,
+  Element,
+} from "../types/type";
 
 const Generater = () => {
   const [kataList, setKataList] = useState<string[]>([]);
   const kataElementLists: KataElementLists =
     useRecoilValue<KataElementLists>(kataElementAtom);
 
+  const getRandomFromList = (listAreAbleToList: Element[]): Element => {
+    const randomizedElement: Element =
+      listAreAbleToList[Math.floor(Math.random() * listAreAbleToList.length)];
+    return randomizedElement;
+  };
+
   const generateKataList = () => {
     const temporaryLataList: string[] = [];
     for (let i = 0; i < 10; i++) {
-      const tachikata: Tachikata =
-        kataElementLists["tachikataList"][
-          Math.floor(Math.random() * kataElementLists["tachikataList"].length)
-        ];
+      const tachikata: Tachikata = getRandomFromList(
+        kataElementLists["tachikataList"]
+      );
 
       const torikataListAreAbleToList: Torikata[] = kataElementLists[
         "torikataList"
@@ -23,10 +34,9 @@ const Generater = () => {
         return !torikata["TachikataAreNotAbleTo"].includes(tachikata["name"]);
       });
 
-      const torikata: Torikata =
-        torikataListAreAbleToList[
-          Math.floor(Math.random() * torikataListAreAbleToList.length)
-        ];
+      const torikata: Torikata = getRandomFromList(
+        torikataListAreAbleToList
+      ) as Torikata;
 
       const wazaListAreAbleToList: Waza[] = kataElementLists["wazaList"].filter(
         (waza: Waza) => {
@@ -37,10 +47,7 @@ const Generater = () => {
         }
       );
 
-      const waza: Waza =
-        wazaListAreAbleToList[
-          Math.floor(Math.random() * wazaListAreAbleToList.length)
-        ];
+      const waza: Waza = getRandomFromList(wazaListAreAbleToList) as Waza;
 
       const kata: string = tachikata["name"] + torikata["name"] + waza["name"];
       temporaryLataList.push(kata);
