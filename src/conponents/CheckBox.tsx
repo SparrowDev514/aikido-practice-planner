@@ -38,11 +38,11 @@ const CheckBox = (props: PropsType): JSX.Element => {
   };
 
   return (
-    <tbody>
+    <div>
       {kataElementLists[kataElementListsKey].map(
         (element: Element, index: number) => (
-          <tr key={index} style={{ flex: 1 }}>
-            <td>
+          <ul key={index} style={{ textAlign: "center" }}>
+            <li style={{ textAlign: "left" }}>
               <label htmlFor="tachikata">
                 <input
                   type="checkbox"
@@ -57,11 +57,11 @@ const CheckBox = (props: PropsType): JSX.Element => {
                 />
                 {element["name"]}
               </label>
-            </td>
-          </tr>
+            </li>
+          </ul>
         )
       )}
-    </tbody>
+    </div>
   );
 };
 export default CheckBox;

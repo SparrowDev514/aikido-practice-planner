@@ -3,19 +3,16 @@ import CheckBox from "../conponents/CheckBox";
 
 const Settings = () => {
   return (
-    <>
-      <div>設定</div>
-      <Link to="/">戻る</Link>
-      <hr />
-      <table style={{ display: "flex" }}>
-        <CheckBox
-          elementKinds="tachikata"
-          kataElementListsKey="tachikataList"
-        />
-        <CheckBox elementKinds="torikata" kataElementListsKey="torikataList" />
-        <CheckBox elementKinds="waza" kataElementListsKey="wazaList" />
-      </table>
-    </>
+    <div style={{ display: "inline-flex" }}>
+      <div>
+        表示する型の要素を選択する
+        <br />
+        <Link to="/">戻る</Link>
+      </div>
+      <CheckBox elementKinds="tachikata" kataElementListsKey="tachikataList" />
+      <CheckBox elementKinds="torikata" kataElementListsKey="torikataList" />
+      <CheckBox elementKinds="waza" kataElementListsKey="wazaList" />
+    </div>
   );
 };
 

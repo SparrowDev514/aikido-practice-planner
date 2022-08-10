@@ -4,9 +4,11 @@ import Router from "./router/Router";
 
 const App = () => {
   return (
-    <RecoilRoot>
-      <Router />
-    </RecoilRoot>
+    <div>
+      <RecoilRoot>
+        <Router />
+      </RecoilRoot>
+    </div>
   );
 };
 

@@ -58,19 +58,21 @@ const Generater = () => {
   return (
     <>
       <div>合気道稽古内容ジェネレーター</div>
-      <input type="button" value="生成する" onClick={generateKataList} />
-      <br />
-      <Link to="settings">設定</Link>
+      <input
+        type="button"
+        value="生成する"
+        onClick={generateKataList}
+        style={{ margin: "auto" }}
+      />
+      <Link to="settings" style={{ float: "right" }}>
+        設定
+      </Link>
       <hr />
-      <table>
-        <tbody>
-          {kataList.map((kata: string, index: number) => (
-            <tr key={index}>
-              <td>{kata}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      {kataList.map((kata: string, index: number) => (
+        <ul key={index} style={{ textAlign: "center" }}>
+          <li style={{ textAlign: "left" }}>{kata}</li>
+        </ul>
+      ))}
     </>
   );
 };
