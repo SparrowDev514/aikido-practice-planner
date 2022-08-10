@@ -1,9 +1,9 @@
 export type Torikata = {
   name: string;
-  TachiKataAreNotAbleTo: string[];
+  TachikataAreNotAbleTo: string[];
 };
 export type Waza = {
   name: string;
-  TachiKataAreNotAbleTo: string[];
+  TachikataAreNotAbleTo: string[];
   TorikataAreNotAbleTo: string[];
 };

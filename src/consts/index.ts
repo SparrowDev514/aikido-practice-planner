@@ -1,133 +1,133 @@
-export const tachiKataList = ["立技", "半身半立", "座技"];
+export const tachikataList = ["立技", "半身半立", "座技"];
 
 export const torikataList = [
   {
     name: "正面打ち",
-    TachiKataAreNotAbleTo: [],
+    TachikataAreNotAbleTo: [],
   },
   {
     name: "横面打ち",
-    TachiKataAreNotAbleTo: [],
+    TachikataAreNotAbleTo: [],
   },
   {
     name: "突き",
-    TachiKataAreNotAbleTo: ["半身半立", "座技"],
+    TachikataAreNotAbleTo: ["半身半立", "座技"],
   },
   {
     name: "片手取り",
-    TachiKataAreNotAbleTo: [],
+    TachikataAreNotAbleTo: [],
   },
   {
     name: "肩取り",
-    TachiKataAreNotAbleTo: [],
+    TachikataAreNotAbleTo: [],
   },
   {
     name: "両肩取り",
-    TachiKataAreNotAbleTo: [],
+    TachikataAreNotAbleTo: [],
   },
   {
     name: "両手取り",
-    TachiKataAreNotAbleTo: [],
+    TachikataAreNotAbleTo: [],
   },
   {
     name: "諸手取り",
-    TachiKataAreNotAbleTo: ["半身半立", "座技"],
+    TachikataAreNotAbleTo: ["半身半立", "座技"],
   },
   {
     name: "交差取り",
-    TachiKataAreNotAbleTo: ["半身半立", "座技"],
+    TachikataAreNotAbleTo: ["半身半立", "座技"],
   },
   {
     name: "後両手取り",
-    TachiKataAreNotAbleTo: ["半身半立", "座技"],
+    TachikataAreNotAbleTo: ["半身半立", "座技"],
   },
   {
     name: "後両肩取り",
-    TachiKataAreNotAbleTo: ["座技"],
+    TachikataAreNotAbleTo: ["座技"],
   },
   {
     name: "後襟取り",
-    TachiKataAreNotAbleTo: ["座技"],
+    TachikataAreNotAbleTo: ["座技"],
   },
   {
     name: "後首絞め",
-    TachiKataAreNotAbleTo: ["半身半立", "座技"],
+    TachikataAreNotAbleTo: ["半身半立", "座技"],
   },
   {
     name: "肩取り面打ち",
-    TachiKataAreNotAbleTo: ["半身半立", "座技"],
+    TachikataAreNotAbleTo: ["半身半立", "座技"],
   },
 ];
 
 export const wazaList = [
   {
     name: "呼吸法",
-    TachiKataAreNotAbleTo: [],
+    TachikataAreNotAbleTo: [],
     TorikataAreNotAbleTo: [],
   },
   {
     name: "一教",
-    TachiKataAreNotAbleTo: [],
+    TachikataAreNotAbleTo: [],
     TorikataAreNotAbleTo: [],
   },
   {
     name: "二教",
-    TachiKataAreNotAbleTo: [],
+    TachikataAreNotAbleTo: [],
     TorikataAreNotAbleTo: [],
   },
   {
     name: "三教",
-    TachiKataAreNotAbleTo: [],
+    TachikataAreNotAbleTo: [],
     TorikataAreNotAbleTo: [],
   },
   {
     name: "四教",
-    TachiKataAreNotAbleTo: [],
+    TachikataAreNotAbleTo: [],
     TorikataAreNotAbleTo: [],
   },
   {
     name: "五教",
-    TachiKataAreNotAbleTo: [],
+    TachikataAreNotAbleTo: [],
     TorikataAreNotAbleTo: [],
   },
   {
     name: "六教(肘極め)",
-    TachiKataAreNotAbleTo: ["半身半立"],
+    TachikataAreNotAbleTo: ["半身半立"],
     TorikataAreNotAbleTo: [],
   },
   {
     name: "四方投げ",
-    TachiKataAreNotAbleTo: [],
+    TachikataAreNotAbleTo: [],
     TorikataAreNotAbleTo: [],
   },
   {
     name: "入身投げ",
-    TachiKataAreNotAbleTo: [],
+    TachikataAreNotAbleTo: [],
     TorikataAreNotAbleTo: [],
   },
   {
     name: "小手返し",
-    TachiKataAreNotAbleTo: [],
+    TachikataAreNotAbleTo: [],
     TorikataAreNotAbleTo: [],
   },
   {
     name: "回転投げ",
-    TachiKataAreNotAbleTo: ["半身半立"],
+    TachikataAreNotAbleTo: ["半身半立"],
     TorikataAreNotAbleTo: ["両肩取り", "肩取り面打ち"],
   },
   {
     name: "隅落とし",
-    TachiKataAreNotAbleTo: ["座技"],
+    TachikataAreNotAbleTo: ["座技"],
     TorikataAreNotAbleTo: [],
   },
   {
     name: "天秤投げ",
-    TachiKataAreNotAbleTo: [],
+    TachikataAreNotAbleTo: [],
     TorikataAreNotAbleTo: [],
   },
   {
     name: "天地投げ",
-    TachiKataAreNotAbleTo: ["半身半立", "座技"],
+    TachikataAreNotAbleTo: ["半身半立", "座技"],
     TorikataAreNotAbleTo: [
       "正面打ち",
       "横面打ち",
@@ -146,7 +146,7 @@ export const wazaList = [
   },
   {
     name: "十字投げ",
-    TachiKataAreNotAbleTo: [],
+    TachikataAreNotAbleTo: [],
     TorikataAreNotAbleTo: [
       "正面打ち",
       "横面打ち",
@@ -158,52 +158,52 @@ export const wazaList = [
   },
   {
     name: "絡み二教",
-    TachiKataAreNotAbleTo: ["半身半立", "座技"],
+    TachikataAreNotAbleTo: ["半身半立", "座技"],
     TorikataAreNotAbleTo: ["両肩取り", "肩取り面打ち"],
   },
   {
     name: "一教返し",
-    TachiKataAreNotAbleTo: [],
+    TachikataAreNotAbleTo: [],
     TorikataAreNotAbleTo: [],
   },
   {
     name: "袖投げ",
-    TachiKataAreNotAbleTo: ["座技"],
+    TachikataAreNotAbleTo: ["座技"],
     TorikataAreNotAbleTo: ["正面打ち", "横面打ち", "突き", "片手取り"],
   },
   {
     name: "腰投げ",
-    TachiKataAreNotAbleTo: ["半身半立", "座技"],
+    TachikataAreNotAbleTo: ["半身半立", "座技"],
     TorikataAreNotAbleTo: [],
   },
   {
     name: "合気落とし",
-    TachiKataAreNotAbleTo: ["半身半立", "座技"],
+    TachikataAreNotAbleTo: ["半身半立", "座技"],
     TorikataAreNotAbleTo: [],
   },
   {
     name: "一教投げ",
-    TachiKataAreNotAbleTo: ["座技"],
+    TachikataAreNotAbleTo: ["座技"],
     TorikataAreNotAbleTo: [],
   },
   {
     name: "二教投げ",
-    TachiKataAreNotAbleTo: ["座技"],
+    TachikataAreNotAbleTo: ["座技"],
     TorikataAreNotAbleTo: [],
   },
   {
     name: "三教投げ",
-    TachiKataAreNotAbleTo: ["座技"],
+    TachikataAreNotAbleTo: ["座技"],
     TorikataAreNotAbleTo: [],
   },
   {
     name: "四教投げ",
-    TachiKataAreNotAbleTo: ["座技"],
+    TachikataAreNotAbleTo: ["座技"],
     TorikataAreNotAbleTo: [],
   },
   {
     name: "呼吸投げ",
-    TachiKataAreNotAbleTo: [],
+    TachikataAreNotAbleTo: [],
     TorikataAreNotAbleTo: [],
   },
 ];

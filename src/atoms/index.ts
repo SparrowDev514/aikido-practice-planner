@@ -1,8 +1,8 @@
 import { atom } from "recoil";
 import { Torikata, Waza } from "../types/type";
 
-export const tachiKataAtom = atom<string[]>({
-  key: "tachiKataAtom",
+export const tachikataAtom = atom<string[]>({
+  key: "tachikataAtom",
   default: [],
 });
 

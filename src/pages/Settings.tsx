@@ -1,23 +1,23 @@
 import { useRecoilState } from "recoil";
-import { tachiKataAtom, torikataAtom, wazaAtom } from "../atoms";
-import { tachiKataList, torikataList, wazaList } from "../consts/index";
+import { tachikataAtom, torikataAtom, wazaAtom } from "../atoms";
+import { tachikataList, torikataList, wazaList } from "../consts/index";
 import { Torikata, Waza } from "../types/type";
 
 const Settings = () => {
-  const [selectedTachiKataList, setSelectedTachiKataList] =
-    useRecoilState(tachiKataAtom);
+  const [selectedTachikataList, setSelectedTachikataList] =
+    useRecoilState(tachikataAtom);
   const [selectedTorikataList, setSelectedTorikataList] =
     useRecoilState(torikataAtom);
   const [selectedWazaList, setSelectedWazaList] = useRecoilState(wazaAtom);
 
-  const handleTachiKata = (selectedTachiKata: string) => {
-    if (selectedTachiKataList.includes(selectedTachiKata)) {
-      const newSelectedTachiKataList = selectedTachiKataList.filter(
-        (tachiKata) => selectedTachiKata !== tachiKata
+  const handleTachikata = (selectedTachikata: string) => {
+    if (selectedTachikataList.includes(selectedTachikata)) {
+      const newSelectedTachikataList = selectedTachikataList.filter(
+        (tachikata) => selectedTachikata !== tachikata
       );
-      setSelectedTachiKataList([...newSelectedTachiKataList]);
+      setSelectedTachikataList([...newSelectedTachikataList]);
     } else {
-      setSelectedTachiKataList([...selectedTachiKataList, selectedTachiKata]);
+      setSelectedTachikataList([...selectedTachikataList, selectedTachikata]);
     }
   };
 
@@ -49,16 +49,16 @@ const Settings = () => {
       <hr />
       <table style={{ display: "flex" }}>
         <tbody>
-          {tachiKataList.map((tachiKata: string) => (
-            <tr key={tachiKata} style={{ flex: 1 }}>
+          {tachikataList.map((tachikata: string) => (
+            <tr key={tachikata} style={{ flex: 1 }}>
               <td>
-                <label htmlFor="tachiKata">
+                <label htmlFor="tachikata">
                   <input
                     type="checkbox"
-                    name="tachiKata"
-                    onChange={() => handleTachiKata(tachiKata)}
+                    name="tachikata"
+                    onChange={() => handleTachikata(tachikata)}
                   />
-                  {tachiKata}
+                  {tachikata}
                 </label>
               </td>
             </tr>

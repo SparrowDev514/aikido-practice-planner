@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { tachiKataList, torikataList, wazaList } from "../consts/index";
+import { tachikataList, torikataList, wazaList } from "../consts/index";
 import { Torikata, Waza } from "../types/type";
 
 const Generater = () => {
@@ -9,12 +9,12 @@ const Generater = () => {
   const generateKataList = () => {
     const temporaryLataList: string[] = [];
     for (let i = 0; i < 10; i++) {
-      const tachiKata: string =
-        tachiKataList[Math.floor(Math.random() * tachiKataList.length)];
+      const tachikata: string =
+        tachikataList[Math.floor(Math.random() * tachikataList.length)];
 
       const torikataListAreAbleToList: Torikata[] = torikataList.filter(
         (torikata: Torikata) => {
-          return !torikata["TachiKataAreNotAbleTo"].includes(tachiKata);
+          return !torikata["TachikataAreNotAbleTo"].includes(tachikata);
         }
       );
 
@@ -25,7 +25,7 @@ const Generater = () => {
 
       const wazaListAreAbleToList: Waza[] = wazaList.filter((waza: Waza) => {
         return !(
-          waza["TachiKataAreNotAbleTo"].includes(tachiKata) ||
+          waza["TachikataAreNotAbleTo"].includes(tachikata) ||
           waza["TorikataAreNotAbleTo"].includes(torikata["name"])
         );
       });
@@ -35,7 +35,7 @@ const Generater = () => {
           Math.floor(Math.random() * wazaListAreAbleToList.length)
         ];
 
-      const kata: string = tachiKata + torikata["name"] + waza["name"];
+      const kata: string = tachikata + torikata["name"] + waza["name"];
       temporaryLataList.push(kata);
     }
     setKataList([...temporaryLataList]);
