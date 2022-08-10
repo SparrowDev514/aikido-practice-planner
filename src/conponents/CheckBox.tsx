@@ -18,25 +18,23 @@ const CheckBox = (props: PropsType): JSX.Element => {
   const handleElement = (selectedElement: Element) => {
     const selectedElementList: Element[] =
       selectedKataElementLists[kataElementListsKey];
+    let newSelectedElementList: Element[] = [];
+    const hasSelectedElementInList: boolean = !!selectedElementList.find(
+      (element) => element.name === selectedElement.name
+    );
 
-    if (
-      selectedElementList.find(
-        (element) => element.name === selectedElement.name
-      )
-    ) {
-      const newSelectedElementList: Element[] = selectedElementList.filter(
+    if (hasSelectedElementInList) {
+      newSelectedElementList = selectedElementList.filter(
         (element: Element) => selectedElement.name !== element.name
       );
-      setSelectedKataElementLists({
-        ...selectedKataElementLists,
-        [kataElementListsKey]: newSelectedElementList,
-      });
     } else {
-      setSelectedKataElementLists({
-        ...selectedKataElementLists,
-        [kataElementListsKey]: selectedElementList,
-      });
+      newSelectedElementList = [...selectedElementList, selectedElement];
     }
+
+    setSelectedKataElementLists({
+      ...selectedKataElementLists,
+      [kataElementListsKey]: newSelectedElementList,
+    });
   };
 
   return (
