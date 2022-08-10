@@ -1,45 +1,48 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useRecoilValue } from "recoil";
-import { tachikataAtom, torikataAtom, wazaAtom } from "../atoms";
-import { Torikata, Waza } from "../types/type";
+import { kataElementAtom } from "../atoms";
+import { KataElementLists, Tachikata, Torikata, Waza } from "../types/type";
 
 const Generater = () => {
   const [kataList, setKataList] = useState<string[]>([]);
-  const tachikataList: string[] = useRecoilValue(tachikataAtom);
-  const torikataList: Torikata[] = useRecoilValue(torikataAtom);
-  const wazaList: Waza[] = useRecoilValue(wazaAtom);
+  const kataElementLists: KataElementLists =
+    useRecoilValue<KataElementLists>(kataElementAtom);
 
   const generateKataList = () => {
     const temporaryLataList: string[] = [];
     for (let i = 0; i < 10; i++) {
-      const tachikata: string =
-        tachikataList[Math.floor(Math.random() * tachikataList.length)];
+      const tachikata: Tachikata =
+        kataElementLists["tachikataList"][
+          Math.floor(Math.random() * kataElementLists["tachikataList"].length)
+        ];
 
-      const torikataListAreAbleToList: Torikata[] = torikataList.filter(
-        (torikata: Torikata) => {
-          return !torikata["TachikataAreNotAbleTo"].includes(tachikata);
-        }
-      );
+      const torikataListAreAbleToList: Torikata[] = kataElementLists[
+        "torikataList"
+      ].filter((torikata: Torikata) => {
+        return !torikata["TachikataAreNotAbleTo"].includes(tachikata["name"]);
+      });
 
       const torikata: Torikata =
         torikataListAreAbleToList[
           Math.floor(Math.random() * torikataListAreAbleToList.length)
         ];
 
-      const wazaListAreAbleToList: Waza[] = wazaList.filter((waza: Waza) => {
-        return !(
-          waza["TachikataAreNotAbleTo"].includes(tachikata) ||
-          waza["TorikataAreNotAbleTo"].includes(torikata["name"])
-        );
-      });
+      const wazaListAreAbleToList: Waza[] = kataElementLists["wazaList"].filter(
+        (waza: Waza) => {
+          return !(
+            waza["TachikataAreNotAbleTo"].includes(tachikata["name"]) ||
+            waza["TorikataAreNotAbleTo"].includes(torikata["name"])
+          );
+        }
+      );
 
       const waza: Waza =
         wazaListAreAbleToList[
           Math.floor(Math.random() * wazaListAreAbleToList.length)
         ];
 
-      const kata: string = tachikata + torikata["name"] + waza["name"];
+      const kata: string = tachikata["name"] + torikata["name"] + waza["name"];
       temporaryLataList.push(kata);
     }
     setKataList([...temporaryLataList]);

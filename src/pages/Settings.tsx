@@ -1,46 +1,44 @@
 import { Link } from "react-router-dom";
 import { useRecoilState } from "recoil";
-import { tachikataAtom, torikataAtom, wazaAtom } from "../atoms";
-import { tachikataList, torikataList, wazaList } from "../consts/index";
-import { Torikata, Waza } from "../types/type";
+import { kataElementAtom } from "../atoms";
+import { kataElementLists } from "../consts/index";
+import {
+  KataElementLists,
+  KataElementListsKeys,
+  Tachikata,
+  Torikata,
+  Waza,
+  Element,
+} from "../types/type";
 
 const Settings = () => {
-  const [selectedTachikataList, setSelectedTachikataList] =
-    useRecoilState(tachikataAtom);
-  const [selectedTorikataList, setSelectedTorikataList] =
-    useRecoilState(torikataAtom);
-  const [selectedWazaList, setSelectedWazaList] = useRecoilState(wazaAtom);
+  const [selectedKataElementLists, setSelectedKataElementLists] =
+    useRecoilState<KataElementLists>(kataElementAtom);
 
-  const handleTachikata = (selectedTachikata: string) => {
-    if (selectedTachikataList.includes(selectedTachikata)) {
-      const newSelectedTachikataList = selectedTachikataList.filter(
-        (tachikata) => selectedTachikata !== tachikata
-      );
-      setSelectedTachikataList([...newSelectedTachikataList]);
-    } else {
-      setSelectedTachikataList([...selectedTachikataList, selectedTachikata]);
-    }
-  };
+  const handleElement = (
+    selectedElement: Element,
+    ElementKinds: KataElementListsKeys
+  ) => {
+    const selectedElementList: Element[] =
+      selectedKataElementLists[ElementKinds];
 
-  const handleTorikataKata = (selectedTorikata: Torikata) => {
-    if (selectedTorikataList.includes(selectedTorikata)) {
-      const newSelectedToriKataList = selectedTorikataList.filter(
-        (toriKata) => selectedTorikata.name !== toriKata.name
+    if (
+      selectedElementList.find(
+        (element) => element.name === selectedElement.name
+      )
+    ) {
+      const newSelectedElementList: Element[] = selectedElementList.filter(
+        (element: Element) => selectedElement.name !== element.name
       );
-      setSelectedTorikataList([...newSelectedToriKataList]);
+      setSelectedKataElementLists({
+        ...selectedKataElementLists,
+        [ElementKinds]: newSelectedElementList,
+      });
     } else {
-      setSelectedTorikataList([...selectedTorikataList, selectedTorikata]);
-    }
-  };
-
-  const handleWaza = (selectedWaza: Waza) => {
-    if (selectedWazaList.includes(selectedWaza)) {
-      const newSelectedWazaList = selectedWazaList.filter(
-        (waza) => selectedWaza.name !== waza.name
-      );
-      setSelectedWazaList([...newSelectedWazaList]);
-    } else {
-      setSelectedWazaList([...selectedWazaList, selectedWaza]);
+      setSelectedKataElementLists({
+        ...selectedKataElementLists,
+        [ElementKinds]: selectedElementList,
+      });
     }
   };
 
@@ -51,51 +49,61 @@ const Settings = () => {
       <hr />
       <table style={{ display: "flex" }}>
         <tbody>
-          {tachikataList.map((tachikata: string) => (
-            <tr key={tachikata} style={{ flex: 1 }}>
-              <td>
-                <label htmlFor="tachikata">
-                  <input
-                    type="checkbox"
-                    name="tachikata"
-                    defaultChecked={selectedTachikataList.includes(tachikata)}
-                    onChange={() => handleTachikata(tachikata)}
-                  />
-                  {tachikata}
-                </label>
-              </td>
-            </tr>
-          ))}
+          {kataElementLists["tachikataList"].map(
+            (tachikata: Tachikata, index: number) => (
+              <tr key={index} style={{ flex: 1 }}>
+                <td>
+                  <label htmlFor="tachikata">
+                    <input
+                      type="checkbox"
+                      name="tachikata"
+                      defaultChecked={selectedKataElementLists[
+                        "tachikataList"
+                      ].includes(tachikata)}
+                      onChange={() => handleElement(tachikata, "tachikataList")}
+                    />
+                    {tachikata["name"]}
+                  </label>
+                </td>
+              </tr>
+            )
+          )}
         </tbody>
         <tbody>
-          {torikataList.map((torikata: Torikata) => (
-            <tr key={torikata.name} style={{ flex: 1 }}>
-              <td>
-                <label htmlFor="torikata">
-                  <input
-                    type="checkbox"
-                    name="torikata"
-                    defaultChecked={selectedTorikataList.includes(torikata)}
-                    onChange={() => handleTorikataKata(torikata)}
-                  />
-                  {torikata.name}
-                </label>
-              </td>
-            </tr>
-          ))}
+          {kataElementLists["torikataList"].map(
+            (torikata: Torikata, index: number) => (
+              <tr key={index} style={{ flex: 1 }}>
+                <td>
+                  <label htmlFor="torikata">
+                    <input
+                      type="checkbox"
+                      name="torikata"
+                      defaultChecked={selectedKataElementLists[
+                        "torikataList"
+                      ].includes(torikata)}
+                      onChange={() => handleElement(torikata, "torikataList")}
+                    />
+                    {torikata["name"]}
+                  </label>
+                </td>
+              </tr>
+            )
+          )}
         </tbody>
         <tbody>
-          {wazaList.map((waza: Waza) => (
-            <tr key={waza.name} style={{ flex: 1 }}>
+          {kataElementLists["wazaList"].map((waza: Waza, index: number) => (
+            <tr key={index} style={{ flex: 1 }}>
               <td>
                 <label htmlFor="waza">
                   <input
                     type="checkbox"
                     name="waza"
-                    defaultChecked={selectedWazaList.includes(waza)}
-                    onChange={() => handleWaza(waza)}
+                    defaultChecked={selectedKataElementLists[
+                      "wazaList"
+                    ].includes(waza)}
+                    onChange={() => handleElement(waza, "wazaList")}
                   />
-                  {waza.name}
+                  {waza["name"]}
                 </label>
               </td>
             </tr>

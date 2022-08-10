@@ -1,18 +1,23 @@
 import { atom } from "recoil";
-import { Torikata, Waza } from "../types/type";
-import { tachikataList, torikataList, wazaList } from "../consts/index";
+import { KataElementLists, Tachikata, Torikata, Waza } from "../types/type";
+import { kataElementLists } from "../consts/index";
 
-export const tachikataAtom = atom<string[]>({
+export const kataElementAtom = atom<KataElementLists>({
+  key: "kataElementAtom",
+  default: kataElementLists,
+});
+
+export const tachikataAtom = atom<Tachikata[]>({
   key: "tachikataAtom",
-  default: tachikataList,
+  default: kataElementLists["tachikataList"],
 });
 
 export const torikataAtom = atom<Torikata[]>({
   key: "torikataAtom",
-  default: torikataList,
+  default: kataElementLists["torikataList"],
 });
 
 export const wazaAtom = atom<Waza[]>({
   key: "wazaAtom",
-  default: wazaList,
+  default: kataElementLists["wazaList"],
 });
