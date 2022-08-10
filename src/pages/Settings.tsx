@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { tachikataAtom, torikataAtom, wazaAtom } from "../atoms";
 import { tachikataList, torikataList, wazaList } from "../consts/index";
@@ -46,6 +47,7 @@ const Settings = () => {
   return (
     <>
       <div>設定</div>
+      <Link to="/">戻る</Link>
       <hr />
       <table style={{ display: "flex" }}>
         <tbody>
@@ -56,6 +58,7 @@ const Settings = () => {
                   <input
                     type="checkbox"
                     name="tachikata"
+                    defaultChecked={selectedTachikataList.includes(tachikata)}
                     onChange={() => handleTachikata(tachikata)}
                   />
                   {tachikata}
@@ -72,6 +75,7 @@ const Settings = () => {
                   <input
                     type="checkbox"
                     name="torikata"
+                    defaultChecked={selectedTorikataList.includes(torikata)}
                     onChange={() => handleTorikataKata(torikata)}
                   />
                   {torikata.name}
@@ -88,6 +92,7 @@ const Settings = () => {
                   <input
                     type="checkbox"
                     name="waza"
+                    defaultChecked={selectedWazaList.includes(waza)}
                     onChange={() => handleWaza(waza)}
                   />
                   {waza.name}

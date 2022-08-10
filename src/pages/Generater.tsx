@@ -1,10 +1,14 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { tachikataList, torikataList, wazaList } from "../consts/index";
+import { useRecoilValue } from "recoil";
+import { tachikataAtom, torikataAtom, wazaAtom } from "../atoms";
 import { Torikata, Waza } from "../types/type";
 
 const Generater = () => {
   const [kataList, setKataList] = useState<string[]>([]);
+  const tachikataList: string[] = useRecoilValue(tachikataAtom);
+  const torikataList: Torikata[] = useRecoilValue(torikataAtom);
+  const wazaList: Waza[] = useRecoilValue(wazaAtom);
 
   const generateKataList = () => {
     const temporaryLataList: string[] = [];
@@ -45,6 +49,7 @@ const Generater = () => {
     <>
       <div>合気道稽古内容ジェネレーター</div>
       <input type="button" value="生成する" onClick={generateKataList} />
+      <br />
       <Link to="settings">設定</Link>
       <hr />
       <table>
