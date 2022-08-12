@@ -22,37 +22,46 @@ const Generater = () => {
   };
 
   const generateKataList = () => {
-    const temporaryLataList: string[] = [];
-    for (let i = 0; i < 10; i++) {
-      const tachikata: Tachikata = getRandomFromList(
-        kataElementLists["tachikataList"]
-      );
+    if (
+      kataElementLists["tachikataList"].length === 0 ||
+      kataElementLists["torikataList"].length === 0 ||
+      kataElementLists["wazaList"].length === 0
+    ) {
+      setKataList(["表示できる型がありません"]);
+    } else {
+      for (let i = 0; i < 10; i++) {
+        const temporaryLataList: string[] = [];
+        const tachikata: Tachikata = getRandomFromList(
+          kataElementLists["tachikataList"]
+        );
 
-      const torikataListAreAbleToList: Torikata[] = kataElementLists[
-        "torikataList"
-      ].filter((torikata: Torikata) => {
-        return !torikata["TachikataAreNotAbleTo"].includes(tachikata["name"]);
-      });
+        const torikataListAreAbleToList: Torikata[] = kataElementLists[
+          "torikataList"
+        ].filter((torikata: Torikata) => {
+          return !torikata["TachikataAreNotAbleTo"].includes(tachikata["name"]);
+        });
 
-      const torikata: Torikata = getRandomFromList(
-        torikataListAreAbleToList
-      ) as Torikata;
+        const torikata: Torikata = getRandomFromList(
+          torikataListAreAbleToList
+        ) as Torikata;
 
-      const wazaListAreAbleToList: Waza[] = kataElementLists["wazaList"].filter(
-        (waza: Waza) => {
+        const wazaListAreAbleToList: Waza[] = kataElementLists[
+          "wazaList"
+        ].filter((waza: Waza) => {
           return !(
             waza["TachikataAreNotAbleTo"].includes(tachikata["name"]) ||
             waza["TorikataAreNotAbleTo"].includes(torikata["name"])
           );
-        }
-      );
+        });
 
-      const waza: Waza = getRandomFromList(wazaListAreAbleToList) as Waza;
+        const waza: Waza = getRandomFromList(wazaListAreAbleToList) as Waza;
 
-      const kata: string = tachikata["name"] + torikata["name"] + waza["name"];
-      temporaryLataList.push(kata);
+        const kata: string =
+          tachikata["name"] + torikata["name"] + waza["name"];
+        temporaryLataList.push(kata);
+        setKataList([...temporaryLataList]);
+      }
     }
-    setKataList([...temporaryLataList]);
   };
 
   return (
