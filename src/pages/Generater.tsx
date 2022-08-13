@@ -29,12 +29,9 @@ const Generater = () => {
     ) {
       setKataList(["表示できる型がありません"]);
     } else {
-      const displayableTachikataList: Tachikata[] = [];
-      for (let i = 0; i < 10; i++) {
-        displayableTachikataList.push(
-          getRandomFromList(kataElementLists["tachikataList"])
-        );
-      }
+      const displayableTachikataList: Tachikata[] = [...Array(10)].map(() => {
+        return getRandomFromList(kataElementLists["tachikataList"]);
+      });
 
       const kataList: string[] = displayableTachikataList.map(
         (displayableTachikata: Tachikata) => {
