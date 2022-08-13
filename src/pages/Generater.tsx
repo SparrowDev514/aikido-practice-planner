@@ -29,38 +29,43 @@ const Generater = () => {
     ) {
       setKataList(["表示できる型がありません"]);
     } else {
+      const displayableTachikataList: Tachikata[] = [];
       for (let i = 0; i < 10; i++) {
-        const temporaryLataList: string[] = [];
-        const tachikata: Tachikata = getRandomFromList(
-          kataElementLists["tachikataList"]
+        displayableTachikataList.push(
+          getRandomFromList(kataElementLists["tachikataList"])
         );
-
-        const torikataListAreAbleToList: Torikata[] = kataElementLists[
-          "torikataList"
-        ].filter((torikata: Torikata) => {
-          return !torikata["TachikataAreNotAbleTo"].includes(tachikata["name"]);
-        });
-
-        const torikata: Torikata = getRandomFromList(
-          torikataListAreAbleToList
-        ) as Torikata;
-
-        const wazaListAreAbleToList: Waza[] = kataElementLists[
-          "wazaList"
-        ].filter((waza: Waza) => {
-          return !(
-            waza["TachikataAreNotAbleTo"].includes(tachikata["name"]) ||
-            waza["TorikataAreNotAbleTo"].includes(torikata["name"])
-          );
-        });
-
-        const waza: Waza = getRandomFromList(wazaListAreAbleToList) as Waza;
-
-        const kata: string =
-          tachikata["name"] + torikata["name"] + waza["name"];
-        temporaryLataList.push(kata);
-        setKataList([...temporaryLataList]);
       }
+
+      const kataList: string[] = displayableTachikataList.map(
+        (displayableTachikata: Tachikata) => {
+          const torikataListAreAbleToList: Torikata[] = kataElementLists[
+            "torikataList"
+          ].filter((torikata: Torikata) => {
+            return !torikata["TachikataAreNotAbleTo"].includes(
+              displayableTachikata["name"]
+            );
+          });
+          const torikata: Torikata = getRandomFromList(
+            torikataListAreAbleToList
+          ) as Torikata;
+
+          const wazaListAreAbleToList: Waza[] = kataElementLists[
+            "wazaList"
+          ].filter((waza: Waza) => {
+            return !(
+              waza["TachikataAreNotAbleTo"].includes(
+                displayableTachikata["name"]
+              ) || waza["TorikataAreNotAbleTo"].includes(torikata["name"])
+            );
+          });
+          const waza: Waza = getRandomFromList(wazaListAreAbleToList) as Waza;
+
+          const kata: string =
+            displayableTachikata["name"] + torikata["name"] + waza["name"];
+          return kata;
+        }
+      );
+      setKataList([...kataList]);
     }
   };
 
